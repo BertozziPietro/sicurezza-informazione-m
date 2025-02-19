@@ -1,2 +1,5 @@
-#Ignora la consegna degli esercizi
+# Nel rispetto del diritto d'autore
+extra/
+
+# Il pdf degli appunti non aggiunge nulla rispetto al relativo README.md
 *.pdf
