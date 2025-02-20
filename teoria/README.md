@@ -56,7 +56,7 @@ Anno Accademico 2024/2025    Prof.ssa Rebecca Montanari    Autore Pietro
     
     - Vulnerabilità: Una debolezza in un sistema, dettata da un errore umano o intrinseca, che determina una minaccia.
     
-    - Minaccia: atto ostile che sfruttando una vulnerabilità, causa un danno. Può essere intenzionale (hacker) o accidentale (errore umano, guasto hardware). In questo corso ci concentriamo sulle minaccie intenzionali.
+    - Minaccia: atto ostile che sfruttando una vulnerabilità, causa un danno. Può essere intenzionale (azione mirante a compromettere una proprietà critica della informaizone) o accidentale (errore umano, guasto hardware). In questo corso ci concentriamo sulle minaccie intenzionali.
     
     - Attacco: Un'azione concreta che sfrutta una vulnerabilità per realizzare una minaccia.
     
@@ -103,3 +103,79 @@ Anno Accademico 2024/2025    Prof.ssa Rebecca Montanari    Autore Pietro
 17. Cosa è il modello di minaccia?
     
     Il modello di minaccia (Threat Model) è un processo utilizzato in cybersecurity per identificare, analizzare e mitigare potenziali minacce a un sistema, applicazione o rete con l'obiettivo di comprendere le vulnerabilità e sviluppare contromisure per ridurre i rischi prima che possano essere sfruttati dagli attaccanti. Scegliere ed implementare correttamente le contromisure più adatte (in senso ampio) caratterizza un buon ingegnere del settore.
+
+18. Come si classificano le contromisure?
+    
+    Si dividono in contromisure di prevenzione, rilevazione, reazione e deviazione. SI deve sempre tener presente che ogni contromisura ha un costo e degli effetti negativi.
+
+19. Quali sono gli strumenti che permettono l'effettiva messa in pratica delle misure di sicurezza?
+    
+    Gli strumenti sono tecnologici, strumenti di policy; in termini di regole principi e procedure, ma sono essenziali anche gli strumenti di educazione.
+
+20. Su cosa si concentra questo corso? E cosa invece non è approfondito?
+    
+    Il focus del corso riguarda i modelli, le tecnologie e le infrastrutture per garantire la sicurezza dei dati (memorizzazione sicura, trasmissione sicura su rete e accesso autenticato e autorizzato). Non verrà approfonditi né le strategie di penetration testing, né i sistemi operativi sicuri, né la progettazione di programmi sicuri. Si sorvolerà anche su rilevamento di malware e hardware sicuro e di analisi del rischio.
+
+21. Le proprietà CIA sono esaustive?
+    
+    No, ci sono anche altre priorità che possono essere anche fondamentali a sconda del contesto.  Eccone un breve elenco:
+    
+    - L'autenticaizone della controparte: la verifica dell' identità dell'utente nell’accesso ad un sistema e del peer durante la comunicazione attraverso reti pubbliche.
+    
+    - Non Ripudio: l'impossibilità di disconoscere la paternità di messaggio, e dualmente, l'impossibilità di attribuire erroneamente la paternità dello stesso.
+    
+    - Controllo degli accessi: sistemi di protezione che permettono la granilarità dei permessi.
+    
+    - Tracciabilità: la possibilità di consultare documenti chiari dai quali si può capire la storia del sistema enfatizzando gli eventi rilevanti dal punto di vista della sicurezza dello stesso.
+
+22. Quali sono i concetti chiave dello studio dell'analisi del rischio?
+    
+    - Analisi del contesto
+    
+    - Analisi del sistema informatico
+    
+    - Classificazione degli utenti
+    
+    - Definizione dei diritti di accesso
+    
+    - Catalogazione degli eventi indesiderati
+    
+    - Valutaizone del rischio ($rischio = probabilità * danno$)
+    
+    - Individuazione delle contromisure
+    
+    - Integraizone delle contromisure
+
+23. Come si realizza un calcolatore sicuro?
+    
+    L'accesso ad ogni risorsa HW e SW di un sistema informatico e la sua modalità d'uso devono essere regolamentati; le autorizzazioni concesse ad un utente non devono poter essere usate da altri (mandatory vs. discretional access control).
+    
+    Sono possibili 3 approcci:
+    
+    - progetto integrato HW e SW basato su trusted computer platform (Fritz+Nexus)
+    
+    - Funzioni e regole di sicurezza su estensioni del SO (Unix, se Linux)
+    
+    - Coprocessore per la sicurezza
+
+24. Cosa distingue i meccanismi di sicurezza dai servizi di sicurezza?
+    
+    - Meccanismo di sicurezza: meccanismo progettato per rilevare, prevenire un attacco, risanare il sistema a seguito di un attacco.
+    
+    - Servizio di sicurezza: servizio che migliora la sicurezza dell'elaboraizone dei dati e del trasferimento delle informazioni. Un servizio di sicurezza utilizza uno o più meccanismi.
+
+25. Come le diverse proprietà possono essere invalidate?
+    
+    Osservando gli attacchi dal punto di vista dei canali, si possono distinguere:
+    
+    - attacchi alla disponibilità si realizza con una interruzione
+    
+    - attacchi alla confidenzialità si realizza con una intercettazione.
+    
+    - attacchi alla integrità si realizza con una modifica.
+    
+    - attacchi alla autenticità si reliazza con una fabbricazione.
+    
+    Da notare che tutti gli attacchi citati sono considerati attacchi attivi, a condizione dell'intercettaizone. 
+    Il controllo del canale è sempre una idea vincente per chi si occupa di sicurezza.
+    Per difendersi dagli attacchi passivi è efficace usare una rappresentazione incomprensibile dell'informaizone, mentre per difendersi dagli attacchi attivi si utilizzano attestati di integrità e di origine.
