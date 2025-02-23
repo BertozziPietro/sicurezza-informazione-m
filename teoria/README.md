@@ -179,3 +179,26 @@ Anno Accademico 2024/2025    Prof.ssa Rebecca Montanari    Autore Pietro
     Da notare che tutti gli attacchi citati sono considerati attacchi attivi, a condizione dell'intercettaizone. 
     Il controllo del canale è sempre una idea vincente per chi si occupa di sicurezza.
     Per difendersi dagli attacchi passivi è efficace usare una rappresentazione incomprensibile dell'informaizone, mentre per difendersi dagli attacchi attivi si utilizzano attestati di integrità e di origine.
+
+## Trasformaizoni per la sicurezza
+
+1. Cosa si intende per modello a canale insicuro?
+   
+   Il modello a canale insicuro assume che il canale di comunicazione tra sorgente e destinatario possa essere compromesso da un attaccante. Questo significa che un intruso può intercettare, modificare o bloccare i messaggi trasmessi. Tuttavia, si presume che sorgente e destinatario siano sicuri. Per proteggere i dati in questo scenario, si utilizzano tecniche come la crittografia, la firma digitale e le funzioni hash crittografiche per garantire autenticità, integrità e riservatezza delle comunicazioni.
+
+2. Qual è la differenza tra autenticazione e autenticità?
+   
+   L’autenticazione riguarda la verifica dell’identità di un’entità (es. utente, sistema, servizio), assicurandosi che sia chi dice di essere. Questo può essere ottenuto tramite password, certificati digitali o sistemi biometrici.
+   L’autenticità, invece, si riferisce alla verifica dell’origine di un dato, garantendo che provenga realmente dalla fonte dichiarata e che non sia stato alterato. L’autenticità può essere garantita tramite firme digitali o funzioni hash crittografiche.
+
+3. Perché l’analisi del rischio è importante per la sicurezza informatica?
+   
+   L’analisi del rischio permette di identificare le vulnerabilità di un sistema e di valutare l’impatto di potenziali attacchi. Senza questa analisi, un’azienda potrebbe investire risorse in protezioni inutili o trascurare minacce critiche. Le fasi principali includono la mappatura degli asset, la valutazione dei rischi e la definizione di contromisure adeguate. Inoltre, con le nuove normative, anche le piccole aziende devono adottare strategie di gestione del rischio per proteggere dati sensibili e infrastrutture.
+
+4. Qual è il ruolo delle funzioni hash crittografiche nella sicurezza?
+   
+   Le funzioni hash crittografiche trasformano un messaggio in un’impronta digitale univoca e a lunghezza fissa, utile per garantire integrità e autenticità. Una buona funzione hash deve essere resistente alle collisioni (difficile trovare due input con lo stesso hash) e irreversibile (impossibile risalire all’input originale dall’hash). Sono impiegate in molte applicazioni, come la verifica dell’integrità dei file, l’archiviazione sicura delle password e la firma digitale.
+
+5. In cosa si differenzia una firma digitale da un semplice hash del messaggio?
+   
+   Un semplice hash garantisce solo l’integrità, permettendo di verificare che un messaggio non sia stato modificato, ma non identifica chi lo ha generato. La firma digitale, invece, aggiunge autenticità e non ripudiabilità, in quanto utilizza la crittografia asimmetrica: il mittente firma il messaggio con la propria chiave privata e il destinatario può verificarne l’origine con la chiave pubblica. Questo assicura che il messaggio provenga effettivamente dal mittente e non possa essere negato in seguito.
