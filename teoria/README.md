@@ -195,10 +195,14 @@ Anno Accademico 2024/2025    Prof.ssa Rebecca Montanari    Autore Pietro
    
    L’analisi del rischio permette di identificare le vulnerabilità di un sistema e di valutare l’impatto di potenziali attacchi. Senza questa analisi, un’azienda potrebbe investire risorse in protezioni inutili o trascurare minacce critiche. Le fasi principali includono la mappatura degli asset, la valutazione dei rischi e la definizione di contromisure adeguate. Inoltre, con le nuove normative, anche le piccole aziende devono adottare strategie di gestione del rischio per proteggere dati sensibili e infrastrutture.
 
-4. Qual è il ruolo delle funzioni hash crittografiche nella sicurezza?
+4. Perché è necessaria la ridondanza nella codifica o nel tempo per garantire la sicurezza?
+   
+   La ridondanza è fondamentale perché molte trasformazioni per la sicurezza richiedono informazioni aggiuntive per funzionare correttamente. Ad esempio, nella codifica, un messaggio può includere dati extra per rilevare modifiche o errori, come negli hash crittografici o nei codici di autenticazione. Nel tempo, alcune operazioni richiedono calcoli più complessi per garantire un livello di sicurezza maggiore, come nella crittografia a chiave pubblica. Senza ridondanza, sarebbe difficile verificare l’integrità, autenticare i dati o proteggere le informazioni da attacchi.
+
+5. Qual è il ruolo delle funzioni hash crittografiche nella sicurezza?
    
    Le funzioni hash crittografiche trasformano un messaggio in un’impronta digitale univoca e a lunghezza fissa, utile per garantire integrità e autenticità. Una buona funzione hash deve essere resistente alle collisioni (difficile trovare due input con lo stesso hash) e irreversibile (impossibile risalire all’input originale dall’hash). Sono impiegate in molte applicazioni, come la verifica dell’integrità dei file, l’archiviazione sicura delle password e la firma digitale.
 
-5. In cosa si differenzia una firma digitale da un semplice hash del messaggio?
+6. In cosa si differenzia una firma digitale da un semplice hash del messaggio?
    
    Un semplice hash garantisce solo l’integrità, permettendo di verificare che un messaggio non sia stato modificato, ma non identifica chi lo ha generato. La firma digitale, invece, aggiunge autenticità e non ripudiabilità, in quanto utilizza la crittografia asimmetrica: il mittente firma il messaggio con la propria chiave privata e il destinatario può verificarne l’origine con la chiave pubblica. Questo assicura che il messaggio provenga effettivamente dal mittente e non possa essere negato in seguito.
