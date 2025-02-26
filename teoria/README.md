@@ -182,27 +182,131 @@ Anno Accademico 2024/2025    Prof.ssa Rebecca Montanari    Autore Pietro
 
 ## Trasformaizoni per la sicurezza
 
-1. Cosa si intende per modello a canale insicuro?
+1. Qual è la differenza tra crittografia e crittoanalisi?
+   
+   La crittografia si occupa di progettare algoritmi sicuri per proteggere informazioni, mentre la crittoanalisi studia metodi per attaccare questi sistemi e violare la sicurezza.
+
+2. Cosa si intende per modello a canale insicuro?
    
    Il modello a canale insicuro assume che il canale di comunicazione tra sorgente e destinatario possa essere compromesso da un attaccante. Questo significa che un intruso può intercettare, modificare o bloccare i messaggi trasmessi. Tuttavia, si presume che sorgente e destinatario siano sicuri. Per proteggere i dati in questo scenario, si utilizzano tecniche come la crittografia, la firma digitale e le funzioni hash crittografiche per garantire autenticità, integrità e riservatezza delle comunicazioni.
 
-2. Qual è la differenza tra autenticazione e autenticità?
+3. Qual è la differenza tra autenticazione e autenticità?
    
    L’autenticazione riguarda la verifica dell’identità di un’entità (es. utente, sistema, servizio), assicurandosi che sia chi dice di essere. Questo può essere ottenuto tramite password, certificati digitali o sistemi biometrici.
    L’autenticità, invece, si riferisce alla verifica dell’origine di un dato, garantendo che provenga realmente dalla fonte dichiarata e che non sia stato alterato. L’autenticità può essere garantita tramite firme digitali o funzioni hash crittografiche.
 
-3. Perché l’analisi del rischio è importante per la sicurezza informatica?
+4. Perché l’analisi del rischio è importante per la sicurezza informatica?
    
    L’analisi del rischio permette di identificare le vulnerabilità di un sistema e di valutare l’impatto di potenziali attacchi. Senza questa analisi, un’azienda potrebbe investire risorse in protezioni inutili o trascurare minacce critiche. Le fasi principali includono la mappatura degli asset, la valutazione dei rischi e la definizione di contromisure adeguate. Inoltre, con le nuove normative, anche le piccole aziende devono adottare strategie di gestione del rischio per proteggere dati sensibili e infrastrutture.
 
-4. Perché è necessaria la ridondanza nella codifica o nel tempo per garantire la sicurezza?
+5. Perché è necessaria la ridondanza nella codifica o nel tempo per garantire la sicurezza?
    
    La ridondanza è fondamentale perché molte trasformazioni per la sicurezza richiedono informazioni aggiuntive per funzionare correttamente. Ad esempio, nella codifica, un messaggio può includere dati extra per rilevare modifiche o errori, come negli hash crittografici o nei codici di autenticazione. Nel tempo, alcune operazioni richiedono calcoli più complessi per garantire un livello di sicurezza maggiore, come nella crittografia a chiave pubblica. Senza ridondanza, sarebbe difficile verificare l’integrità, autenticare i dati o proteggere le informazioni da attacchi.
 
-5. Qual è il ruolo delle funzioni hash crittografiche nella sicurezza?
+6. Qual è il ruolo delle funzioni hash crittografiche nella sicurezza?
    
    Le funzioni hash crittografiche trasformano un messaggio in un’impronta digitale univoca e a lunghezza fissa, utile per garantire integrità e autenticità. Una buona funzione hash deve essere resistente alle collisioni (difficile trovare due input con lo stesso hash) e irreversibile (impossibile risalire all’input originale dall’hash). Sono impiegate in molte applicazioni, come la verifica dell’integrità dei file, l’archiviazione sicura delle password e la firma digitale.
 
-6. In cosa si differenzia una firma digitale da un semplice hash del messaggio?
+7. In cosa si differenzia una firma digitale da un semplice hash del messaggio?
    
    Un semplice hash garantisce solo l’integrità, permettendo di verificare che un messaggio non sia stato modificato, ma non identifica chi lo ha generato. La firma digitale, invece, aggiunge autenticità e non ripudiabilità, in quanto utilizza la crittografia asimmetrica: il mittente firma il messaggio con la propria chiave privata e il destinatario può verificarne l’origine con la chiave pubblica. Questo assicura che il messaggio provenga effettivamente dal mittente e non possa essere negato in seguito.
+
+8. Come si possono definire le funzioni encrypt, decrypt, hash, sign e verify?
+   
+   - Encrypt (Cifratura): Trasforma un messaggio in un formato illeggibile per chi non possiede la chiave corretta. Usato per garantire riservatezza.
+   
+   - Decrypt (Decifratura): Operazione inversa di encrypt, riporta il messaggio cifrato al suo stato originale.
+   
+   - Hash(Impronta): Funzione unidirezionale che produce un'impronta digitale di un dato. Serve per integrità e firma digitale.
+   
+   - Sign (Firma): Usa una chiave privata per generare una firma digitale che autentica un messaggio.
+   
+   - Verify (Verifica): Controlla una firma digitale con la chiave pubblica per accertarne la validità.
+
+9. Cosa sono le funzioni unidirezionali e pseudo-unidirezionali?
+   
+   - Unidirezionali: Funzioni matematiche facili da calcolare in una direzione, ma difficili da invertire senza informazioni segrete. Sono quindi difficilmente invertibili ma facili da calcolare Sono usate nella crittografia per garantire sicurezza (es. funzioni hash, crittografia asimmetrica).
+   
+   - Pseudo-unidirezionali: Funzioni che sembrano unidirezionali ma possono essere invertite in determinate condizioni, ad esempio con l'uso di un attacco crittografico o un'operazione aggiuntiva. Appare quindi come unidirezionale per chiunque non sia in possesso di una particolare informazione sulla sua costruzione.
+
+10. Cosa si intende con hash resistente alle collisioni?
+    
+    Un hash è resistente alle collisioni se è difficile trovare due input diversi che producono lo stesso output. Tipologie:
+    
+    - Preimage resistance: Dato un hash H, non si deve poter trovare il messaggio originale M.
+    
+    - Second preimage resistance: Dato M1 e il suo hash H1, non si deve poter trovare M2 con lo stesso H1.
+    
+    - Collision resistance: Non si devono poter trovare due messaggi M1 e M2 che generano lo stesso hash H.
+
+11. In che senso l'identificazione avviene in real-time?
+    
+    L'identificazione è valida solo nell'istante in cui viene effettuata. Il verificatore e il verificato devono essere online e il processo deve essere veloce per evitare disservizi (flasi negativi) e chiaramente evitare violazioni della sicurezza (falsi positivi).
+
+12. Quali sono le fasi dell'identificazione?
+    
+    - Registrazione: l'utente si registra presso il sistema fornendo informazioni che saranno utilizzate per l'identificazione futura. Normalmente viene memorizzato un hash di questa informazione.
+    
+    - Dichiarazione: l'utente si presenta al sistema e dichiara la propria identità. Questa non è una prova sufficiente.
+    
+    - Interrogazione: il sistema invia una sfida all'utente per verificarne l'identità; deve essere sicuro rpima di concedere l'autenticazione e le conseguenti autorizzazioni.
+    
+    - Dimostrazione: l'utente fornisce la prova della propria identità. Ci possono essere diverse implementazioni: password, token, opt, dati biometrici. C'è un forte legame tra el informazioni della registrazione e quelle della dimostrazione.
+
+13. Con quali informazioni ci si identifica?
+    
+    Tre categorie principali:
+    
+    - Conoscenza: Qualcosa che solo l'utente conosce (password, PIN).
+    
+    - Possesso: Qualcosa che l'utente possiede (smart card, token).
+    
+    - Conformità: Caratteristiche uniche dell'utente che può essere comportamentale o biologica (impronta digitale, riconoscimento facciale).
+
+14. Come si può garantire un'informazione segreta?
+    
+    - Macchina segreta: Hardware specializzato (non scalabile e poco certificabile).
+    
+    - Algoritmo segreto: Algoritmo non noto (difficile da mantenere sicuro nel tempo).
+    
+    - Parametro segreto: Algoritmo noto con chiave segreta (soluzione migliore per sicurezza e affidabilità).
+
+15. Qual è la differenza tra cifrari simmetrici e asimmetrici?
+    
+    - Simmetrici: Usano la stessa chiave per cifrare e decifrare (es. AES). Veloci ed efficienti, sono ideali per garantire riservatezza nelle comunicazioni.
+    
+    - Asimmetrici: Usano una coppia di chiavi pubblica/privata (es. RSA, Diffie-Hellman). Più lenti rispetto ai cifrari simmetrici, sono particolarmente utili per autenticazione e scambio sicuro di chiavi.
+
+16. Quali possono essere gli attacchi al segreto?
+    
+    - Indovinare: Attacco a forza bruta o con dizionario.
+    
+    - Intercettare: Sniffing di dati in transito.
+    
+    - Deducere: Analisi statistica e crittografica.
+
+17. Come funziona l'attacco a forza bruta?
+    
+    Si provano tutte le combinazioni possibili della chiave fino a trovare quella corretta. La sicurezza aumenta con la lunghezza della chiave (oggi >128 bit è sicuro). Per questo motivo le password troppo corte non sono considerate sicure. Gli attacchi a forza bruta sono spesso affiancati da un dizionario, e sono quindi capaci trovare le chiavi che sono sono state generate casualmente. Per questo le password che hanno un significato per chi le genera sono generalmente considerate non sicure.
+
+18. Come si possono classificare gli attacchi di deduzione e qual è la misura preventiva generale?
+    
+    - Attacco con solo testo cifrato: l'attaccante conosce il linguaggio del messagio.
+    
+    - Attacco con testo in chiaro noto: l'attaccante conosce il cifrato corrispondente.
+    
+    - Attacco con testo in chiaro scelto: l'attaccante conosce il cifrato corrispondente.
+    
+    - Attacco con testo cifrato scelto: l'attaccante conosce il messaggio corrispondente.
+    
+    La contromisura per eccellenza è assicurarsi che l'uscita di un algoritmo crittografico appaia come una variabile aleatoria che assume con eguale probabilità tutti i suoi possibili valori.
+
+19. Perchè la procedura di recovery è fondamentale e quali possono essere i problemi per la sicurezza?
+    
+    E' fondamentale perchè gli utenti possono dimenticare le credenziali di accesso e, senza un metodo di recupero, potrebbero perdere l'accesso ai loro account in modo permanente. Tuttavia si introducono vulnerabilità di sicurezza: attacchi di ingegneria sociale, email compromesse, domande di sicurezza deboli, repupero via SMS non sicuro ed altro. Per mitigare questi rischi si possono adottare misure di sicurezza vanzate come l'autenticaizone a due fattori (MFA), notifiche di recupero e limite sui tentativi di reset, oppure dei cooldown time.
+
+
+
+relazione tra le chiavi?
+
+protocollo sicuro su macchina sicura
