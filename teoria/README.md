@@ -305,8 +305,60 @@ Anno Accademico 2024/2025    Prof.ssa Rebecca Montanari    Autore Pietro
     
     E' fondamentale perchè gli utenti possono dimenticare le credenziali di accesso e, senza un metodo di recupero, potrebbero perdere l'accesso ai loro account in modo permanente. Tuttavia si introducono vulnerabilità di sicurezza: attacchi di ingegneria sociale, email compromesse, domande di sicurezza deboli, repupero via SMS non sicuro ed altro. Per mitigare questi rischi si possono adottare misure di sicurezza vanzate come l'autenticaizone a due fattori (MFA), notifiche di recupero e limite sui tentativi di reset, oppure dei cooldown time.
 
+20. Cosa si intende con complessità di un algoritmo?
+    
+    La complessità di un algoritmo può essere misurata secondo diversi indicatori: memoria occupata, memoria necessaria per l'esecuzione e tempo di esecuzione. Il tempo di esecuzione è generalemnte considerato il più importante, specialmente per crittografi e crittoanalisti.
+
+21. Come si utilizza la notazione O-grande?
+    
+    La notazione O-grande serve a descrivere il comportamente asintotico di un algoritmo; si considera solo il temrine che cresce più velocemente (ignorando i temrini di ordine inferiore) e si assume il caso peggiore in input per garantire un limite superiore. Quando la funzione non è esprimibile analiticamente si fa riferimento ad una funzione, esprimibile analiticamente che la approssima.
+
+22. Cosa si intende con funzione facile e con funzione difficile?
+    
+    Le funzioni facili, sono risolvibili da un algoritmo polinomiale su una macchina Turing deterministica. In caso contrario, la funzione è difficile. Da notare che, seppure estramamente improbabile, è possibile che una funzione difficile diventi facile, si trova un nuovo e migliore algoritmo per risolverla. 
+
+23. Come ci si comporta sapendo che il tempo di esecuzione dipende dall'architettura?
+    
+    Si possono utilizzare come unità di misura gli anniMIPS (anni impiegati da una macchina che esegue un milione di istruzion al secondo). Chiaramente con l'evolvere della tecnologia uno stesso algoritmo ha diverso tempo di esecuzione in MIPS (Legge di Moore e parallelismo). Per esempio, oggi con n = 128 bit di un segreto, questo è indovinabile in $10^{34} anniMIPS$, mentre nel 2000 con n = 88 bit di un segreto, questo era indovinabile in $10^{12} anniMIPS$. In alternativa si può abbandonare il concetto di tempo e valutare il numero di operazioni elementari in funzione di n, ottenendo una misura indipendente dall’hardware. In quel caso è chiaro che un attacco brtute force ha sempre tempo di esecuzione $2^n$.
+
+24. E' quindi sempre una buona idea, in crittofrafia, aumentare il numero di bit dei segreti oltre il necessario?
+    
+    No. Sacrificare l'efficienza in questo modo è un errore. Inoltre l'approccio conservativo obbliga ad una scelta consapevole, sempre aumentare il numero di bit compete ad una progettazione superficiale.
+
+## Sicurezza dei Dati
+
+1. Come funziona il protocollo sicuro su macchina sicura con 3 livelli di sicurezza?
+   
+   Prima di tutto si deve inserire un passphrase, tendenzialmente abbastanza lunga, di vui viene immediatamente fatta l'impronta. In un sistema PBE (Password Based Encryption) questa impronta è utilizzata per cifrare e decifrare la masterkey. La masterkey è unica nel sistema è viene memorizzata in forma cifrata, e decifrata sono al momento del bisogno. L'informazione iniziale che viene cifrata per ottenere la masterkey è di natura casuale grazie ad un PRNG (il cui seme è generato da un vero RNG). Lo PRNG genera anche altri valori all'occorrenza, da cui poi poter ricavare le chiavi utilizzate per cifrare i messaggi. Idealmente si usa una chiave diversa per ogni file e queste chiavi vengono cifrate tutte dalla masterkey. sia le singole chiavi che i messaggi sono salvati in forma cifrata e decifrati sono all'occorrenza. Il terzo livello di sicurezza migliora la resistenza agli attacchi brute force e l'efficienza, evitando di abusare di algoritmi com PBKDF2 o Argon2, tendenzialmente lenti. Infine, migliora la gestione della passphrease, che si può quindi cabiare senza dover ricifrare ogni chiave, ricifrando solo la masterkey.
+
+2. Cosa sono i RNG e in cosa differiscono dai PRNG?
+   
+   I Random Number Generator sono generatori di numeri casuali completamente imprevediabili ed irriproducibili, non sono periodici (nel limite del possibile) perchè la fonte del rumore è fisica: decadimenti radiottivi, rumore termico, turbolenza di fluidi (si possono usare anche segnali da apparati elettronici o programmi di estrazione di rumore dal funionamento del computer). Gli PseudoRNG al contrario sono algoritmo deterministici e per questo hanno un periodo finito e sono prevedibili e riproducibili. Sono anche più efficienti.
+
+3. Cosa significa casuale e cosa significa imprevedibile?
+   
+   Un generatore è casuale se i numeri generati seguono una distribuzione uniforme, senza pattern evidenti, mentre è imprevedibile se, anche conoscendo tutti i numeri precedenti, il prossimo numero non può essere determinato cocn certezza. I PRNG sono sempre casuali ma normalmente prevedibili.
+
+4. Quali sono i test statistici per accertare la casualità di un generatore?
+   
+   - Monobit Test: n_0 circa uguale ad n_1.
+   
+   - Pocker Test: una sequenza di bit di lunghezza data è uniforme.
+   
+   - Run Test: lunghezza delle sequenze consecutive in linea con la distribuzione uniforme.
+   
+   - Long Run Test: non ci sono sequenze troppo lunghe dello stesso valore.
+   
+   - Autocorrelazione: non ci sono differenze dopo lo shift.
+   
+   - Test TDF: i numeri trasformati non seguono una distribuzione nota.
+   
+   - Test di Compressione: la sequenza non si può comprimere troppo.
+
+5. Cosa rende un PRNG crittograficamente sicuro?
+   
+   Oltre chiaramente ad essere casuale, deve essere anche imprevedibile e deve essere impossibile dedurre il seme. Per accertare l'imprevedibilità dell'uscita si utilizza il next-bit text; dati L bit della stringa d'uscita non deve esistere un algoritmo polinomiale in grado di predire il bit L+1-esimo con probabilità > 0,5. La funzione che genera i bit dipendono quindi da una funzione unidirezionale ovvero difficile da invertire. IN sostanza l'imprevedibilità richiesta ad un PRNG non è da intendersi in termini assoluti; si richiede che sia impossibile per un attaccante dedurre il prossimo bit in tempi ragionevoli. Infine deve essere impossibile dedurre il seme, anche conoscendo molti elementi (OW function).
 
 
-relazione tra le chiavi?
 
-protocollo sicuro su macchina sicura
+da sistemare guardare capire slide 12 circa cap1 e la fine del cap 2 su hash e firma digitale e ripudiabilità.
