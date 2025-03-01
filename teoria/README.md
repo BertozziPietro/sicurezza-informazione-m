@@ -211,25 +211,33 @@ Anno Accademico 2024/2025    Prof.ssa Rebecca Montanari    Autore Pietro
    
    Un semplice hash garantisce solo l’integrità, permettendo di verificare che un messaggio non sia stato modificato, ma non identifica chi lo ha generato. La firma digitale, invece, aggiunge autenticità e non ripudiabilità, in quanto utilizza la crittografia asimmetrica: il mittente firma il messaggio con la propria chiave privata e il destinatario può verificarne l’origine con la chiave pubblica. Questo assicura che il messaggio provenga effettivamente dal mittente e non possa essere negato in seguito.
 
-8. Come si possono definire le funzioni encrypt, decrypt, hash, sign e verify?
+8. Quali sono le differenze implementative tra la firma digitale e l'impronta di un messaggio con segreto?
    
-   - Encrypt (Cifratura): Trasforma un messaggio in un formato illeggibile per chi non possiede la chiave corretta. Usato per garantire riservatezza.
-   
-   - Decrypt (Decifratura): Operazione inversa di encrypt, riporta il messaggio cifrato al suo stato originale.
-   
-   - Hash(Impronta): Funzione unidirezionale che produce un'impronta digitale di un dato. Serve per integrità e firma digitale.
-   
-   - Sign (Firma): Usa una chiave privata per generare una firma digitale che autentica un messaggio.
-   
-   - Verify (Verifica): Controlla una firma digitale con la chiave pubblica per accertarne la validità.
+   Nel primo caso al messaggio è affiancata la sua impronta, mentre nel secondo al messaggio è affiancata l'impronta dell'unione di messaggio e segreto condiviso. La firma digitale è quindi non ripudiabile mentre il secondo schema è ripudiabile.
 
-9. Cosa sono le funzioni unidirezionali e pseudo-unidirezionali?
+9. Quali sono i pregi e i difetti della ripudiabilità?
    
-   - Unidirezionali: Funzioni matematiche facili da calcolare in una direzione, ma difficili da invertire senza informazioni segrete. Sono quindi difficilmente invertibili ma facili da calcolare Sono usate nella crittografia per garantire sicurezza (es. funzioni hash, crittografia asimmetrica).
-   
-   - Pseudo-unidirezionali: Funzioni che sembrano unidirezionali ma possono essere invertite in determinate condizioni, ad esempio con l'uso di un attacco crittografico o un'operazione aggiuntiva. Appare quindi come unidirezionale per chiunque non sia in possesso di una particolare informazione sulla sua costruzione.
+   Il non ripudio è cruciale in contesti di natura legale, in cui non deve essere possibile negare la provenienza di un documento. D'altra parte il ripudio può garantire la privacy. Può anche essere più veloce e leggero e non necessità di PKI o simili. Inoltre si aumenta la protezione contro attacchi replay.
 
-10. Cosa si intende con hash resistente alle collisioni?
+10. Come si possono definire le funzioni encrypt, decrypt, hash, sign e verify?
+    
+    - Encrypt (Cifratura): Trasforma un messaggio in un formato illeggibile per chi non possiede la chiave corretta. Usato per garantire riservatezza.
+    
+    - Decrypt (Decifratura): Operazione inversa di encrypt, riporta il messaggio cifrato al suo stato originale.
+    
+    - Hash(Impronta): Funzione unidirezionale che produce un'impronta digitale di un dato. Serve per integrità e firma digitale.
+    
+    - Sign (Firma): Usa una chiave privata per generare una firma digitale che autentica un messaggio.
+    
+    - Verify (Verifica): Controlla una firma digitale con la chiave pubblica per accertarne la validità.
+
+11. Cosa sono le funzioni unidirezionali e pseudo-unidirezionali?
+    
+    - Unidirezionali: Funzioni matematiche facili da calcolare in una direzione, ma difficili da invertire senza informazioni segrete. Sono quindi difficilmente invertibili ma facili da calcolare Sono usate nella crittografia per garantire sicurezza (es. funzioni hash, crittografia asimmetrica).
+    
+    - Pseudo-unidirezionali: Funzioni che sembrano unidirezionali ma possono essere invertite in determinate condizioni, ad esempio con l'uso di un attacco crittografico o un'operazione aggiuntiva. Appare quindi come unidirezionale per chiunque non sia in possesso di una particolare informazione sulla sua costruzione.
+
+12. Cosa si intende con hash resistente alle collisioni?
     
     Un hash è resistente alle collisioni se è difficile trovare due input diversi che producono lo stesso output. Tipologie:
     
@@ -239,11 +247,11 @@ Anno Accademico 2024/2025    Prof.ssa Rebecca Montanari    Autore Pietro
     
     - Collision resistance: Non si devono poter trovare due messaggi M1 e M2 che generano lo stesso hash H.
 
-11. In che senso l'identificazione avviene in real-time?
+13. In che senso l'identificazione avviene in real-time?
     
     L'identificazione è valida solo nell'istante in cui viene effettuata. Il verificatore e il verificato devono essere online e il processo deve essere veloce per evitare disservizi (flasi negativi) e chiaramente evitare violazioni della sicurezza (falsi positivi).
 
-12. Quali sono le fasi dell'identificazione?
+14. Quali sono le fasi dell'identificazione?
     
     - Registrazione: l'utente si registra presso il sistema fornendo informazioni che saranno utilizzate per l'identificazione futura. Normalmente viene memorizzato un hash di questa informazione.
     
@@ -253,7 +261,7 @@ Anno Accademico 2024/2025    Prof.ssa Rebecca Montanari    Autore Pietro
     
     - Dimostrazione: l'utente fornisce la prova della propria identità. Ci possono essere diverse implementazioni: password, token, opt, dati biometrici. C'è un forte legame tra el informazioni della registrazione e quelle della dimostrazione.
 
-13. Con quali informazioni ci si identifica?
+15. Con quali informazioni ci si identifica?
     
     Tre categorie principali:
     
@@ -263,7 +271,7 @@ Anno Accademico 2024/2025    Prof.ssa Rebecca Montanari    Autore Pietro
     
     - Conformità: Caratteristiche uniche dell'utente che può essere comportamentale o biologica (impronta digitale, riconoscimento facciale).
 
-14. Come si può garantire un'informazione segreta?
+16. Come si può garantire un'informazione segreta?
     
     - Macchina segreta: Hardware specializzato (non scalabile e poco certificabile).
     
@@ -271,13 +279,13 @@ Anno Accademico 2024/2025    Prof.ssa Rebecca Montanari    Autore Pietro
     
     - Parametro segreto: Algoritmo noto con chiave segreta (soluzione migliore per sicurezza e affidabilità).
 
-15. Qual è la differenza tra cifrari simmetrici e asimmetrici?
+17. Qual è la differenza tra cifrari simmetrici e asimmetrici?
     
     - Simmetrici: Usano la stessa chiave per cifrare e decifrare (es. AES). Veloci ed efficienti, sono ideali per garantire riservatezza nelle comunicazioni.
     
     - Asimmetrici: Usano una coppia di chiavi pubblica/privata (es. RSA, Diffie-Hellman). Più lenti rispetto ai cifrari simmetrici, sono particolarmente utili per autenticazione e scambio sicuro di chiavi.
 
-16. Quali possono essere gli attacchi al segreto?
+18. Quali possono essere gli attacchi al segreto?
     
     - Indovinare: Attacco a forza bruta o con dizionario.
     
@@ -285,11 +293,11 @@ Anno Accademico 2024/2025    Prof.ssa Rebecca Montanari    Autore Pietro
     
     - Deducere: Analisi statistica e crittografica.
 
-17. Come funziona l'attacco a forza bruta?
+19. Come funziona l'attacco a forza bruta?
     
     Si provano tutte le combinazioni possibili della chiave fino a trovare quella corretta. La sicurezza aumenta con la lunghezza della chiave (oggi >128 bit è sicuro). Per questo motivo le password troppo corte non sono considerate sicure. Gli attacchi a forza bruta sono spesso affiancati da un dizionario, e sono quindi capaci trovare le chiavi che sono sono state generate casualmente. Per questo le password che hanno un significato per chi le genera sono generalmente considerate non sicure.
 
-18. Come si possono classificare gli attacchi di deduzione e qual è la misura preventiva generale?
+20. Come si possono classificare gli attacchi di deduzione e qual è la misura preventiva generale?
     
     - Attacco con solo testo cifrato: l'attaccante conosce il linguaggio del messagio.
     
@@ -301,27 +309,27 @@ Anno Accademico 2024/2025    Prof.ssa Rebecca Montanari    Autore Pietro
     
     La contromisura per eccellenza è assicurarsi che l'uscita di un algoritmo crittografico appaia come una variabile aleatoria che assume con eguale probabilità tutti i suoi possibili valori.
 
-19. Perchè la procedura di recovery è fondamentale e quali possono essere i problemi per la sicurezza?
+21. Perchè la procedura di recovery è fondamentale e quali possono essere i problemi per la sicurezza?
     
     E' fondamentale perchè gli utenti possono dimenticare le credenziali di accesso e, senza un metodo di recupero, potrebbero perdere l'accesso ai loro account in modo permanente. Tuttavia si introducono vulnerabilità di sicurezza: attacchi di ingegneria sociale, email compromesse, domande di sicurezza deboli, repupero via SMS non sicuro ed altro. Per mitigare questi rischi si possono adottare misure di sicurezza vanzate come l'autenticaizone a due fattori (MFA), notifiche di recupero e limite sui tentativi di reset, oppure dei cooldown time.
 
-20. Cosa si intende con complessità di un algoritmo?
+22. Cosa si intende con complessità di un algoritmo?
     
     La complessità di un algoritmo può essere misurata secondo diversi indicatori: memoria occupata, memoria necessaria per l'esecuzione e tempo di esecuzione. Il tempo di esecuzione è generalemnte considerato il più importante, specialmente per crittografi e crittoanalisti.
 
-21. Come si utilizza la notazione O-grande?
+23. Come si utilizza la notazione O-grande?
     
     La notazione O-grande serve a descrivere il comportamente asintotico di un algoritmo; si considera solo il temrine che cresce più velocemente (ignorando i temrini di ordine inferiore) e si assume il caso peggiore in input per garantire un limite superiore. Quando la funzione non è esprimibile analiticamente si fa riferimento ad una funzione, esprimibile analiticamente che la approssima.
 
-22. Cosa si intende con funzione facile e con funzione difficile?
+24. Cosa si intende con funzione facile e con funzione difficile?
     
     Le funzioni facili, sono risolvibili da un algoritmo polinomiale su una macchina Turing deterministica. In caso contrario, la funzione è difficile. Da notare che, seppure estramamente improbabile, è possibile che una funzione difficile diventi facile, si trova un nuovo e migliore algoritmo per risolverla. 
 
-23. Come ci si comporta sapendo che il tempo di esecuzione dipende dall'architettura?
+25. Come ci si comporta sapendo che il tempo di esecuzione dipende dall'architettura?
     
     Si possono utilizzare come unità di misura gli anniMIPS (anni impiegati da una macchina che esegue un milione di istruzion al secondo). Chiaramente con l'evolvere della tecnologia uno stesso algoritmo ha diverso tempo di esecuzione in MIPS (Legge di Moore e parallelismo). Per esempio, oggi con n = 128 bit di un segreto, questo è indovinabile in $10^{34} anniMIPS$, mentre nel 2000 con n = 88 bit di un segreto, questo era indovinabile in $10^{12} anniMIPS$. In alternativa si può abbandonare il concetto di tempo e valutare il numero di operazioni elementari in funzione di n, ottenendo una misura indipendente dall’hardware. In quel caso è chiaro che un attacco brtute force ha sempre tempo di esecuzione $2^n$.
 
-24. E' quindi sempre una buona idea, in crittofrafia, aumentare il numero di bit dei segreti oltre il necessario?
+26. E' quindi sempre una buona idea, in crittofrafia, aumentare il numero di bit dei segreti oltre il necessario?
     
     No. Sacrificare l'efficienza in questo modo è un errore. Inoltre l'approccio conservativo obbliga ad una scelta consapevole, sempre aumentare il numero di bit compete ad una progettazione superficiale.
 
@@ -359,6 +367,34 @@ Anno Accademico 2024/2025    Prof.ssa Rebecca Montanari    Autore Pietro
    
    Oltre chiaramente ad essere casuale, deve essere anche imprevedibile e deve essere impossibile dedurre il seme. Per accertare l'imprevedibilità dell'uscita si utilizza il next-bit text; dati L bit della stringa d'uscita non deve esistere un algoritmo polinomiale in grado di predire il bit L+1-esimo con probabilità > 0,5. La funzione che genera i bit dipendono quindi da una funzione unidirezionale ovvero difficile da invertire. IN sostanza l'imprevedibilità richiesta ad un PRNG non è da intendersi in termini assoluti; si richiede che sia impossibile per un attaccante dedurre il prossimo bit in tempi ragionevoli. Infine deve essere impossibile dedurre il seme, anche conoscendo molti elementi (OW function).
 
+6. Quali sono le proprietà che un impronta può avere?
+   
+   Se $h = H(m)$ allora possono valere le sueguenti proprietà:
+   
+   - Efficienza: $H(x)$ facile per ogni x
+   
+   - Unidirezionalità: $H^{-1}(h)$ difficile per ogni h.
+   
+   - Robustezza debole alle collisioni: per ogni $x$ è difficile trovare $y$ tale che $H(x) = H(y)$.
+   
+   - Robustezza forte alle collisioni: è difficile trovare una coppia $x$ ed $y$ tale che $H(x) = H(y)$.
 
+7. Come funziona la compressione iterata?
+   
+   La compressione iterata è un metodo utilizzato negli algoritmi di hash crittografici per trasformare un messaggio di lunghezza arbitraria in un valore hash di lunghezza fissa. Il messaggio viene diviso in blocchi di dimensione fissa e, se necessario, viene aggiunto padding. L'IV (inizilizzation vector) indica lo stato iniziale e dipende dall'algoritmo scelto. La caratteristica fondamentale è la elaborazione iterativa dei blocchi. Ogni blocco del messaggio viene elaborato in sequenza attraverso una funzione di compresisone; queta funzione prende in input lo stato corrente e il blocco di dati e restituisce un nuovo stato. L'impronta è lo stato finale.
 
-da sistemare guardare capire slide 12 circa cap1 e la fine del cap 2 su hash e firma digitale e ripudiabilità.
+8. In cosa consiste l'accatto di lenght extension?
+   
+   L'attacco di length extension sfrutta il modo in cui gli algoritmi di hash con compressione iterata (come MD5, SHA-1, SHA-256) elaborano i dati. Se un attaccante conosce l'hash di un messaggio $H(m)$ ma non conosce $m$, può calcolare $H(m||m')$, cioè l'hash del messaggio originale esteso con altri dati $m'$.
+
+9. Come ci si può difendere dall'attacco di lenght extension?
+   
+   Un primo sistema di difesa è il padding. Inoltre si noti che se l'impronta viene usata per calcolare $H(s||m)$, si può organizzare il protocollo in questione di modo da usare $H(m||s)$. Un'altra contromisura è quella di usare impronte di impronte:
+   
+   - $H(H(s||m))$
+   
+   - $H(H(s||m)||m)$
+   
+   Il secondo schema è un HMAC (Hash based Message Authentication Code) che viene utilizzato nella autenticazione nelle API, protezione dei token di sessione e integrità nei protocolli di rete.
+
+cap 2 slide 11 non chiara.
