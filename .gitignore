@@ -3,3 +3,5 @@ extra/
 
 # Il pdf degli appunti non aggiunge nulla rispetto al relativo README.md
 *.pdf
+
+!potenziale-vulnerabilità-kdc-attacco-autenticità.pdf
