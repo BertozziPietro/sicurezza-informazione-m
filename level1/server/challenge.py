@@ -42,11 +42,11 @@ def handle(conn):
         try:
             choice = recv()
         except EOFError:
-            break
+            continue
 
         if choice == '0':
             send("Goodbye!\n")
-            break
+            continue
 
         elif choice == '1':
             send("\nPlaintext > ")
@@ -70,7 +70,7 @@ def handle(conn):
 
         else:
             send("Invalid choice. Goodbye!\n")
-            break
+            continue
 
 def main():
     signal.alarm(TIMEOUT)
@@ -81,16 +81,18 @@ def main():
     s.listen(1)
 
     print(f"[+] Listening on port {PORT}...")
-    conn, addr = s.accept()
-    print(f"[+] Connection from {addr} opened")
 
-    try:
-        handle(conn)
-    except Exception as e:
-        print(f"[-] Error: {e}")
-    finally:
-      conn.close()
-      print(f"[+] Connection from {addr} closed")
+    while True:
+        conn, addr = s.accept()
+        print(f"[+] Connection from {addr} opened")
 
+        try:
+            handle(conn)
+        except Exception as e:
+            print(f"[-] Error: {e}")
+        finally:
+            conn.close()
+            print(f"[+] Connection from {addr} closed")
+    
 if __name__ == "__main__":
     main()
