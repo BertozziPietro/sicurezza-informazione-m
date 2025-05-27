@@ -2,7 +2,6 @@
 
 import signal
 import socket
-from binascii import hexlify
 from Crypto.PublicKey import RSA
 from Crypto.Util.number import *
 from random import randint
@@ -22,7 +21,7 @@ def encrypt(m):
 def decrypt(c):
     return pow(c, rsa.d, rsa.n)
 
-def handle_client(conn):
+def handle(conn):
     def send(msg):
         conn.sendall(msg.encode())
 
@@ -86,7 +85,7 @@ def main():
     print(f"[+] Connection from {addr} opened")
 
     try:
-        handle_client(conn)
+        handle(conn)
     except Exception as e:
         print(f"[-] Error: {e}")
     finally:
