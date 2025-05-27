@@ -42,11 +42,11 @@ def handle(conn):
         try:
             choice = recv()
         except EOFError:
-            continue
+            break
 
         if choice == '0':
             send("Goodbye!\n")
-            continue
+            break
 
         elif choice == '1':
             send("\nPlaintext > ")
@@ -70,7 +70,7 @@ def handle(conn):
 
         else:
             send("Invalid choice. Goodbye!\n")
-            continue
+            break
 
 def main():
     signal.alarm(TIMEOUT)

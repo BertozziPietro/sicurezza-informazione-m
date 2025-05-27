@@ -49,21 +49,29 @@ def handle(conn):
             break
 
         elif choice == '1':
-            m = int(input('\nPlaintext > ').strip())
-            used.append(m)
-            send('\nEncrypted: ' + str(encrypt(m)))
+            send("\nPlaintext > ")
+            try:
+                m = int(recv())
+                used.append(m)
+                send('\nEncrypted: {}\n'.format(encrypt(m)))
+            except:
+                send("Invalid input.\n")
 
         elif choice == '2':
-            c = int(input('\nCiphertext > ').strip())
-            if c == flag_encrypted:
-                send("Wait. That's illegal.")
-            else:
-                m = decrypt(c)
-                if any([m % no == 0 for no in used]):
-                    send("Wait. That's illegal.")
-                    break
+            send("\nCiphertext > ")
+            try:
+                c = int(recv())
+                if c == flag_encrypted:
+                    send("Wait. That's illegal.\n")
                 else:
-                    send('\nDecrypted: ' + str(m))
+                    m = decrypt(c)
+                    if any([m % no == 0 for no in used]):
+                        send("Wait. That's illegal.")
+                        break
+                    else:
+                        send('\nDecrypted: {}\n'.format(m))
+            except:
+                send("Invalid input.\n")
 
         else:
             send("Invalid choice. Goodbye!\n")
@@ -78,16 +86,18 @@ def main():
     s.listen(1)
 
     print(f"[+] Listening on port {PORT}...")
-    conn, addr = s.accept()
-    print(f"[+] Connection from {addr} opened")
 
-    try:
-        handle(conn)
-    except Exception as e:
-        print(f"[-] Error: {e}")
-    finally:
-      conn.close()
-      print(f"[+] Connection from {addr} closed")
+    while True:
+        conn, addr = s.accept()
+        print(f"[+] Connection from {addr} opened")
+
+        try:
+            handle(conn)
+        except Exception as e:
+            print(f"[-] Error: {e}")
+        finally:
+            conn.close()
+            print(f"[+] Connection from {addr} closed")
 
 if __name__ == "__main__":
     main()
