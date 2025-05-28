@@ -1,16 +1,17 @@
-# Level 1
+# Level 2
 
 ## 🤖 Comportamento
 
 L'oracolo permette di **cifrare** e **decifrare**.  
 **Non permette di decifrare il cifrato della flag**.  
+**Non consente di decifrare un cifrato se risulterebbe un multiplo di un messaggio già decifrato in precedenza**.
 
 ## 🧩 Interazione
 
 E' possibile interagire da terminale.  
 
 ```sh
-nc localhost 2001       # Terminal Interaction
+nc localhost 2002       # Terminal Interaction
 ```
 
 E' anche fornito uno script di soluzione.  
@@ -21,6 +22,7 @@ python3 exploit.py   # Scripted Interaction
 
 ## 📐 Giustificazione Matematica della Vulnerabilità
 
-Omomorfismo Moltiplicativo: $ encrypt(a) * encrypt(b) = encrypt (a * b) $
+$ encrypt(a)^2 = encrypt(a^2) = a^{2e} $  
+$ encrypt(a)^2 - encrypt(a^2) = k * n $  
 
-Soluzione: $ flag = decrypt(encrypt(flag) * encrypt(2)) / 2 $
+Soluzione: $ flag = decrypt(encrypt(flag) * p^-1) * decrypt(p) $
