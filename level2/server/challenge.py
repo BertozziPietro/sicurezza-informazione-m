@@ -13,7 +13,6 @@ TIMEOUT = 300
 
 rsa = RSA.generate(1024)
 flag_encrypted = pow(bytes_to_long(FLAG.encode()), rsa.e, rsa.n)
-used = [bytes_to_long(FLAG.encode())]
 
 def encrypt(m):
     return pow(m, rsa.e, rsa.n)
@@ -22,6 +21,8 @@ def decrypt(c):
     return pow(c, rsa.d, rsa.n)
 
 def handle(conn):
+    used = [bytes_to_long(FLAG.encode())]
+
     def send(msg):
         conn.sendall(msg.encode())
 
