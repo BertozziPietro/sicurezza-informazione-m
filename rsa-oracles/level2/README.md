@@ -1,4 +1,4 @@
-# Level 2
+# Livello 2
 
 ## 🤖 Comportamento
 
@@ -17,12 +17,12 @@ nc localhost 2002       # Terminal Interaction
 E' anche fornito uno script di soluzione.  
 
 ```sh
-python3 exploit.py   # Scripted Interaction
+python3 exploit.py      # Scripted Interaction
 ```
 
 ## 📐 Giustificazione Matematica della Vulnerabilità
 
-$ encrypt(a)^2 = encrypt(a^2) = a^{2e} $  
-$ encrypt(a)^2 - encrypt(a^2) = k * n $  
+encrypt(a)^2 = encrypt(a^2) = a^{2e}   
+encrypt(a)^2 - encrypt(a^2) = k * n   
 
-Soluzione: $ flag = decrypt(encrypt(flag) * p^-1) * decrypt(p) $
+Soluzione: flag = decrypt(encrypt(flag) * p^-1) * decrypt(p) 

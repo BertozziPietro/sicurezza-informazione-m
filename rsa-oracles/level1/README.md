@@ -1,4 +1,4 @@
-# Level 1
+# Livello1 1
 
 ## 🤖 Comportamento
 
@@ -16,11 +16,11 @@ nc localhost 2001       # Terminal Interaction
 E' anche fornito uno script di soluzione.  
 
 ```sh
-python3 exploit.py   # Scripted Interaction
+python3 exploit.py      # Scripted Interaction
 ```
 
 ## 📐 Giustificazione Matematica della Vulnerabilità
 
-Omomorfismo Moltiplicativo: $ encrypt(a) * encrypt(b) = encrypt (a * b) $
+Omomorfismo Moltiplicativo: encrypt(a) * encrypt(b) = encrypt (a * b) 
 
-Soluzione: $ flag = decrypt(encrypt(flag) * encrypt(2)) / 2 $
+Soluzione: flag = decrypt(encrypt(flag) * encrypt(2)) / 2 

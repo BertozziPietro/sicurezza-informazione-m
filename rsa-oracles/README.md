@@ -1,4 +1,4 @@
-# RSA Oracles — CTF Challenge Suite
+# Oracoli RSA — CTF Challenge Suite
 
 Questo piccolo progetto contiene 5 livelli di difficoltà progressiva.  
 Ogni livello propone un oracolo RSA, pensato come server di una sfida CTF (Capture The Flag).  
@@ -16,4 +16,4 @@ nc localhost 2001       # PORT = 2000 + level
 
 ## 🔐 Elenco delle Challenge
 
-[Level 1](./level1/) - [Level 2](./level2/) - [Level 3](./level3/) - [Level 4](./level4/) - [Level 5](./level5/)
+[Livello 1](./level1/) - [Livello 2](./level2/) - [Livello 3](./level3/) - [Livello 4](./level4/) - [Livello 5](./level5/)
