@@ -7,11 +7,13 @@ Ogni livello è focalizzato su una diversa vulnerabilità o proprietà dell'algo
 ## 🚀 Come Provare le Challenge
 
 ```sh
-docker-compose build    # build all containers
-docker-compose up       # starts all servers
-docker-compose down     # stops and removes all containers
+docker-compose build --no-cache             # build all containers
+docker-compose up                           # starts all servers
 
-nc localhost 2001       # PORT = 2000 + level
+nc localhost 2001                           # PORT = 2000 + level
+
+docker-compose down -v --remove-orphans     # stops and removes all containers
+docker system prune -a --volumes            # final cleaning
 ```
 
 ## 🔐 Elenco delle Challenge

@@ -4,7 +4,7 @@ services:
     ports:
       - "2001:2001"
     environment:
-      - FLAG=CTF{placeholder-flag-level1}
+      - FLAG=CTF{this-is-a-default-flag-the-real-one-is-missing}
     restart: unless-stopped
 
   level2:
@@ -12,7 +12,7 @@ services:
     ports:
       - "2002:2002"
     environment:
-      - FLAG=CTF{placeholder-flag-level2}
+      - FLAG=CTF{this-is-a-default-flag-the-real-one-is-missing}
     restart: unless-stopped
 
   level3:
@@ -20,7 +20,7 @@ services:
     ports:
       - "2003:2003"
     environment:
-      - FLAG=CTF{placeholder-flag-level3}
+      - FLAG=CTF{this-is-a-default-flag-the-real-one-is-missing}
     restart: unless-stopped
 
   level4:
@@ -28,7 +28,7 @@ services:
     ports:
       - "2004:2004"
     environment:
-      - FLAG=CTF{placeholder-flag-level4}
+      - FLAG=CTF{this-is-a-default-flag-the-real-one-is-missing}
     restart: unless-stopped
 
   level5:
@@ -36,5 +36,5 @@ services:
     ports:
       - "2005:2005"
     environment:
-      - FLAG=CTF{placeholder-flag-level5}
+      - FLAG=CTF{this-is-a-default-flag-the-real-one-is-missing}
     restart: unless-stopped

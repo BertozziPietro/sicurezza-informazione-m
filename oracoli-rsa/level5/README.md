@@ -23,11 +23,11 @@ python3 exploit.py      # Scripted Interaction
 
 ## 📐 Giustificazione Matematica della Vulnerabilità
 
-encrypt(-1) = (-1)^e = -1 
-decrypt(-1) = -1 = n - 1 
-n = decrypt(-1) + 1 
+encrypt(-1) = (-1)^e = -1  
+decrypt(-1) = -1 = n - 1  
+n = decrypt(-1) + 1  
 
 Soluzione: 
 
-decrypt(-encrypt(flag)) = -flag = n - flag 
+decrypt(-encrypt(flag)) = -flag = n - flag  
 flag = n - decrypt(-encrypt(flag)) 

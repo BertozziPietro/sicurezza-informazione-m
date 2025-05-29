@@ -7,12 +7,13 @@ from Crypto.Util.number import *
 from random import randint
 import os
 
-FLAG = os.getenv("FLAG1", "CTF{this-is-a-default-flag-the-real-one-is-missing}")
+FLAG = os.getenv("FLAG", "CTF{this-is-a-default-flag-the-real-one-is-missing}")
 PORT = 2001
 TIMEOUT = 300
 
-rsa = RSA.generate(1024)
-flag_encrypted = pow(bytes_to_long(FLAG.encode()), rsa.e, rsa.n)
+rsa = None
+flag_encrypted = None
+unsed = None
 
 def encrypt(m):
     return pow(m, rsa.e, rsa.n)
@@ -21,6 +22,9 @@ def decrypt(c):
     return pow(c, rsa.d, rsa.n)
 
 def handle(conn):
+    global rsa, flag_encrypted, used
+    rsa = RSA.generate(1024)
+    flag_encrypted = pow(bytes_to_long(FLAG.encode()), rsa.e, rsa.n)
     used = [bytes_to_long(FLAG.encode())]
 
     def send(msg):
@@ -61,7 +65,7 @@ def handle(conn):
             send("\nCiphertext > ")
             try:
                 c = int(recv())
-                if c == flag_encrypted:
+                if c in used:
                     send("Wait. That's illegal.\n")
                 else:
                     m = decrypt(c)
