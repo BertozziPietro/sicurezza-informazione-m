@@ -27,5 +27,5 @@ e = 65537
 
 Soluzione: 
 
-n = gcd(3^e - encrypt(3), 5^e - encrypt(5)) 
+n = gcd(3^e - encrypt(3), 5^e - encrypt(5))  
 flag = decrypt(encrypt(flag) * p^-1) * decrypt(p) 
